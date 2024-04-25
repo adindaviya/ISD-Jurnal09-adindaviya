@@ -1,19 +1,20 @@
 public class Main {
     public static void main(String[] args) {
-        Graph graph = new Graph();
-        graph.addNote('A', 'B');
-        graph.addNote('A', 'D');
-        graph.addNote('A', 'E');
-        graph.addNote('B', 'E');
-        graph.addNote('C', 'B');
-        graph.addNote('D', 'G');
-        graph.addNote('E', 'F');
-        graph.addNote('E', 'H');
-        graph.addNote('F', 'C');
-        graph.addNote('F', 'H');
-        graph.addNote('G','H');
-        graph.addNote('H', 'I');
-        graph.addNote('I', 'F');
-        System.out.println(graph);
+        
+        Graph myList = new Graph(10);
+        myList.addEdge(0, 1);
+        myList.addEdge(0, 3);
+        myList.addEdge(0, 4);
+        myList.addEdge(3, 6);
+        myList.addEdge(6, 7);
+        myList.addEdge(7, 8);
+        myList.addEdge(8, 5);
+        myList.addEdge(5, 2);
+        myList.addEdge(2, 1);
+        myList.addEdge(1, 4);
+        myList.addEdge(4, 7);
+        myList.addEdge(4, 5);
+        myList.addEdge(5, 7);
+        myList.printGraph();
     }
 }

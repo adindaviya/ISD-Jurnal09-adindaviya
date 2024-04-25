@@ -1,26 +1,35 @@
-import java.util.*;
+import java.util.LinkedList;
 public class Graph {
-    public Map <Character, ArrayList<Character>> graph = new HashMap<>();
-    public void addNote (char start, char dest){
-        if (!graph.containsKey(start)) {
-            graph.put(start, new ArrayList<>());
+    int v;
+    LinkedList<Integer> adjListArray[];
+
+    public Graph(int V) {   
+        this.v = V;
+
+        adjListArray = new LinkedList[v];   
+        for (int i = 0; i < v; i++) {   
+            adjListArray[i] = new LinkedList<>();
         }
-        if (!graph.containsKey(dest)) {
-            graph.put(dest, new ArrayList<>());
-        }
-        graph.get(start).add(dest);
+    }
+    public void addEdge(int src, int dest) {    
+        adjListArray[src].add(dest);
+    }
+    // karena graph berarah maka 
+
+    public String convert(int i) {
+        String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I"};
+        return alphabet[i];
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        for (Character vertexS : graph.keySet()) {
-            result.append("vertex ").append(vertexS).append(" --> ");   
-            for (Character vertexD : graph.get(vertexS)) {
-                result.append(vertexD).append(" ");
+    public void printGraph() {
+        for (int i = 0; i < v; i++) {
+            if (adjListArray[i].size() > 0) {
+                System.out.print("Vertex " + convert(i) + " is connected to: ");
+                for (int j = 0; j < adjListArray[i].size(); j++) {
+                    System.out.print(convert(adjListArray[i].get(j)) + " ");
+                }
+                System.out.println();
             }
-            result.append("\n");
         }
-        return result.toString();
     }
 }
